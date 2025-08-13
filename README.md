@@ -73,8 +73,9 @@ MultiDisease-Diagnosis-WebApp/
 
 #### 1. Clone this repository
 ```bash
-git clone https://github.com/your-username/MultiDisease-Diagnosis-WebApp.git
-cd MultiDisease-Diagnosis-WebApp
+git clone https://github.com/kamijoseph/Multiple-Disease-Diagnosis-Prediction-WebApp.git
+cd Multiple-Disease-Diagnosis-Prediction-WebApp
+
 ```
 #### 2. Create conda environment
 ```bash
