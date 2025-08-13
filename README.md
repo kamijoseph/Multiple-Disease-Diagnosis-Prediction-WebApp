@@ -105,5 +105,5 @@ streamlit run main.py
 | Breast Cancer | [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+%28Diagnostic%29) | Logistic Regression           |
 | Diabetes      | [Kaggle Pima Indians Diabetes Dataset](https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database)        | Random Forest / SVC           |
 | Heart Disease | [UCI Heart Disease Dataset](https://archive.ics.uci.edu/ml/datasets/heart+Disease)                                  | Random Forest / Logistic Reg. |
-| Parkinson’s   | [UCI Parkinson’s Dataset](https://archive.ics.uci.edu/ml/datasets/parkinsons)                                     ElasticNet      |
+| Parkinson’s   | [UCI Parkinson’s Dataset](https://archive.ics.uci.edu/ml/datasets/parkinsons)                                       | ElasticNet
 
