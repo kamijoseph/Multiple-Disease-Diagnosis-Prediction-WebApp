@@ -138,7 +138,67 @@ def heart():
 
 # parkinsons disease webpage function
 def parkinsons():
-    pass
+
+    st.set_page_config(page_title="🧠 Parkinson's Disease Predictor", layout="centered")
+    st.title("🧠 Parkinson's Disease Prediction")
+    st.markdown("Enter the patient's voice measurement parameters to check the likelihood of Parkinson's disease.")
+
+    # --- Feature Input Section ---
+    with st.expander("📊 Fundamental Frequency Features"):
+        fo = st.number_input("MDVP:Fo(Hz) – Average vocal fundamental frequency", min_value=50.0, max_value=300.0, value=120.0)
+        fhi = st.number_input("MDVP:Fhi(Hz) – Max vocal fundamental frequency", min_value=50.0, max_value=300.0, value=150.0)
+        flo = st.number_input("MDVP:Flo(Hz) – Min vocal fundamental frequency", min_value=50.0, max_value=300.0, value=80.0)
+
+    with st.expander("🎯 Jitter and Shimmer Measures"):
+        jitter_pct = st.number_input("MDVP:Jitter(%)", min_value=0.0, max_value=0.1, value=0.005)
+        jitter_abs = st.number_input("MDVP:Jitter(Abs)", min_value=0.0, max_value=0.001, value=0.00005)
+        rap = st.number_input("MDVP:RAP", min_value=0.0, max_value=0.05, value=0.003)
+        ppq = st.number_input("MDVP:PPQ", min_value=0.0, max_value=0.05, value=0.005)
+        ddp = st.number_input("Jitter:DDP", min_value=0.0, max_value=0.1, value=0.010)
+        shimmer = st.number_input("MDVP:Shimmer", min_value=0.0, max_value=1.0, value=0.04)
+        shimmer_db = st.number_input("MDVP:Shimmer(dB)", min_value=0.0, max_value=1.0, value=0.4)
+        apq3 = st.number_input("Shimmer:APQ3", min_value=0.0, max_value=1.0, value=0.02)
+        apq5 = st.number_input("Shimmer:APQ5", min_value=0.0, max_value=1.0, value=0.03)
+        apq = st.number_input("MDVP:APQ", min_value=0.0, max_value=1.0, value=0.03)
+        dda = st.number_input("Shimmer:DDA", min_value=0.0, max_value=1.0, value=0.06)
+
+    with st.expander("🔬 Other Acoustic Measures"):
+        nhr = st.number_input("NHR", min_value=0.0, max_value=1.0, value=0.02)
+        hnr = st.number_input("HNR", min_value=0.0, max_value=50.0, value=20.0)
+        rpde = st.number_input("RPDE", min_value=0.0, max_value=1.0, value=0.4)
+        dfa = st.number_input("DFA", min_value=0.0, max_value=1.0, value=0.8)
+        spread1 = st.number_input("Spread1", min_value=-10.0, max_value=0.0, value=-4.5)
+        spread2 = st.number_input("Spread2", min_value=0.0, max_value=1.0, value=0.3)
+        d2 = st.number_input("D2", min_value=0.0, max_value=5.0, value=2.3)
+        ppe = st.number_input("PPE", min_value=0.0, max_value=1.0, value=0.28)
+
+    # --- Prediction Section ---
+    if st.button("🔍 Predict"):
+        # Prepare feature vector
+        features = np.array([[fo, fhi, flo, jitter_pct, jitter_abs, rap, ppq, ddp, shimmer, shimmer_db, apq3, apq5, apq, dda,
+                            nhr, hnr, rpde, dfa, spread1, spread2, d2, ppe]])
+
+        # Scale features
+        features_scaled = parkinsons_scaler.transform(features)
+
+        # Predict
+        pred = parkinsons_model.predict(features_scaled)[0]
+        proba = parkinsons_model.predict_proba(features_scaled)[0][1]
+
+        # Show preview
+        st.subheader("📄 Input Summary")
+        st.dataframe(
+            { "Feature": ["Fo", "Fhi", "Flo", "Jitter%", "JitterAbs", "RAP", "PPQ", "DDP", "Shimmer", "Shimmer(dB)", 
+                        "APQ3", "APQ5", "APQ", "DDA", "NHR", "HNR", "RPDE", "DFA", "Spread1", "Spread2", "D2", "PPE"],
+            "Value": features[0] }
+        )
+
+        # Result
+        if pred == 1:
+            st.error(f"⚠️ Likely Parkinson's Disease detected. (Probability: {proba*100:.2f}%)")
+        else:
+            st.success(f"✅ Unlikely Parkinson's Disease. (Probability: {proba*100:.2f}%)")
+
 
 def main():
     # sidebar navigation
@@ -162,16 +222,15 @@ def main():
 
     # diabetes disease page
     if (selected=="Diabetes"):
-        # diabetes disease webpage function
         diabetes()
 
     # heart disease page
     if (selected=="Heart Disease"):
-        # heart disease webpage function
         heart()
+        
     # parkinsons disease page
     if (selected=="Parkinsons"):
-        st.title("Parkinsons Disease Diagnosis.")
+        parkinsons()
 
 if __name__ == "__main__":
     main()
