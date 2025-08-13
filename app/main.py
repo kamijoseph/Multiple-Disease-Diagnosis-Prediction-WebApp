@@ -42,6 +42,7 @@ def diabetes_predictor(input_data):
     }
     return result, prob_dict
 
+# diabetes disease webpage function
 def diabetes():
     # title
     st.title("Diabetes Prediction Model")
@@ -100,6 +101,45 @@ def diabetes():
     
     st.success(diagnosis)
 
+# heart disease webpage function
+def heart():
+    st.set_page_config(page_title="Heart Disease Predictor", layout="centered")
+
+    st.title("❤️ Heart Disease Prediction App")
+    st.write("Enter the patient's details below to check the risk of heart disease.")
+
+    # Collect user input
+    age = st.number_input("Age", min_value=1, max_value=120, value=50)
+    sex = st.selectbox("Sex", (0, 1), format_func=lambda x: "Female" if x == 0 else "Male")
+    cp = st.selectbox("Chest Pain Type (cp)", [0, 1, 2, 3])
+    trestbps = st.number_input("Resting Blood Pressure (trestbps)", min_value=50, max_value=250, value=120)
+    chol = st.number_input("Serum Cholesterol (chol)", min_value=100, max_value=600, value=200)
+    fbs = st.selectbox("Fasting Blood Sugar > 120 mg/dl (fbs)", (0, 1), format_func=lambda x: "False" if x == 0 else "True")
+    restecg = st.selectbox("Resting ECG results (restecg)", [0, 1, 2])
+    thalach = st.number_input("Max Heart Rate Achieved (thalach)", min_value=50, max_value=250, value=150)
+    exang = st.selectbox("Exercise Induced Angina (exang)", (0, 1))
+    oldpeak = st.number_input("ST depression (oldpeak)", min_value=0.0, max_value=10.0, value=1.0, step=0.1)
+    slope = st.selectbox("Slope of peak exercise ST segment (slope)", [0, 1, 2])
+    ca = st.number_input("Number of major vessels (ca)", min_value=0, max_value=4, value=0)
+    thal = st.selectbox("Thalassemia (thal)", [0, 1, 2, 3])
+
+    # Prediction button
+    if st.button("Predict"):
+        # Prepare data for prediction
+        features = np.array([[age, sex, cp, trestbps, chol, fbs, restecg,
+                            thalach, exang, oldpeak, slope, ca, thal]])
+        
+        prediction = heart_model.predict(features)[0]
+        
+        if prediction == 1:
+            st.error("⚠️ High risk of heart disease detected.")
+        else:
+            st.success("✅ Low risk of heart disease.")
+
+# parkinsons disease webpage function
+def parkinsons():
+    pass
+
 def main():
     # sidebar navigation
     with st.sidebar:
@@ -122,13 +162,13 @@ def main():
 
     # diabetes disease page
     if (selected=="Diabetes"):
-        # 
+        # diabetes disease webpage function
         diabetes()
 
     # heart disease page
     if (selected=="Heart Disease"):
-        st.title("Heart Disease Diagnosis.")
-
+        # heart disease webpage function
+        heart()
     # parkinsons disease page
     if (selected=="Parkinsons"):
         st.title("Parkinsons Disease Diagnosis.")
