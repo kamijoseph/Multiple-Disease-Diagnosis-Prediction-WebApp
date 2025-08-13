@@ -107,3 +107,14 @@ streamlit run main.py
 | Heart Disease | [UCI Heart Disease Dataset](https://archive.ics.uci.edu/ml/datasets/heart+Disease)                                  | Random Forest / Logistic Reg. |
 | Parkinson’s   | [UCI Parkinson’s Dataset](https://archive.ics.uci.edu/ml/datasets/parkinsons)                                       | ElasticNet
 
+---
+
+## 🙋‍♂️ Questions or Feedback?
+
+Feel free to open an issue or reach out if you have suggestions, questions, or ideas to improve this project.
+Built by @kamijoseph using Streamlit
+
+---
+
+### Built by [@kamijoseph](https://github.com/kamijoseph) using [Streamlit](https://streamlit.io/)
+[![Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://diabetespredictor-ftfgefmpm9jxvr5uninjhz.streamlit.app/)
