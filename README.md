@@ -23,28 +23,35 @@ Each module uses a trained machine learning model to simulate diagnostic scenari
 
 ## 📁 Project Structure
 ```bash
-MultiDisease-Diagnosis-WebApp/
+Multiple-Disease-rediction-WebApp
 │
 ├── app/
-│ └── main.py # Main Streamlit multi-page interface
+│   └── main.py
 │
 ├── datasets/
-│ ├── diabetes.csv
-│ ├── heart.csv
-│ ├── breast_cancer.csv
-│ └── parkinsons.csv
+│   ├── diabetes.csv
+│   ├── heart.csv
+│   ├── breast_cancer.csv
+│   └── parkinsons.csv
 │
 ├── models/
-│ ├── diabetes_model.sav
-│ ├── diabetes_scaler.sav
-│ ├── heart_model.sav
-│ ├── cancer_model.sav
-│ ├── cancer_scaler.sav
-│ ├── parkinsons_model.sav
-│ └── parkinsons_scaler.sav
+│   ├── diabetes_model.sav
+│   ├── diabetes_scaler.sav
+│   ├── heart_model.sav
+│   ├── cancer_model.sav
+│   ├── cancer_scaler.sav
+│   ├── parkinsons_model.sav
+│   └── parkinsons_scaler.sav
 │
-├── requirements.txt # Required Python libraries
-└── README.md
+├── notebooks/
+│   ├── diabetes.ipynb
+│   ├── heart.ipynb
+│   ├── cancer.py
+│   └── parkinsons.ipynb
+│
+├── requirements.txt 
+├── README.md
+└── LICENSE
 ```
 
 ---
