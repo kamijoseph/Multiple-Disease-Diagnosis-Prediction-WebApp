@@ -1,6 +1,6 @@
 # 🩺 Multi-Disease Diagnosis WebApp
 
-🔗 **Live Demo**: [Click here to try the deployed app](https://your-deployed-app-link.streamlit.app/)
+🔗 **Live Demo**: [Click here to try the deployed app](https://multiple-disease-diagnosis-prediction-webapp-emhpxuygqikbckvaz.streamlit.app/)
 
 ---
 
@@ -125,4 +125,4 @@ Built by @kamijoseph using Streamlit
 ---
 
 ### Built by [@kamijoseph](https://github.com/kamijoseph) using [Streamlit](https://streamlit.io/)
-[![Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://diabetespredictor-ftfgefmpm9jxvr5uninjhz.streamlit.app/)
+[![Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://multiple-disease-diagnosis-prediction-webapp-emhpxuygqikbckvaz.streamlit.app/)
